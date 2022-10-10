@@ -1,9 +1,9 @@
-object_file = r".\track__.obj"
+object_file = r'.\track__.obj'
 
 def obj_line_mod(path):
     path_list = path.split('\\')
     file_name = path_list[-1].split('.')[0]
-    with open(path,'r') as finp, open(f'modified_{file_name}.obj',"w") as fout:
+    with open(path,'r') as finp, open(f'modified_{file_name}.obj','w') as fout:
         n = 0
         contents = finp.readlines()
         new_contents = []
@@ -16,7 +16,7 @@ def obj_line_mod(path):
                 pass
             else:
                 #in which case, replace it with the necessary normal vector
-                line = "vn 0.0 0.0 -1.0\n"
+                line = 'vn 0.0 0.0 -1.0\n'
                 new_contents.append(line)
                 continue
             if line[0:2] == 'v ':
@@ -25,12 +25,12 @@ def obj_line_mod(path):
                 vertex_string = line
                 coordinates = vertex_string.split(' ')
                 new_y = str(float(coordinates[2])+0.01)
-                new_vertex = f"v {coordinates[1]} {new_y} {coordinates[3]}"
+                new_vertex = f'v {coordinates[1]} {new_y} {coordinates[3]}'
                 new_contents.append(new_vertex)
                 n += 1
         i=1
         while i < (2*n)-1:
-            new_face = f"f {i}//1 {i+1}//1 {i+2}//1\n"
+            new_face = f'f {i}//1 {i+1}//1 {i+2}//1\n'
             new_contents.append(new_face)
             i+=1
         print(new_contents)
