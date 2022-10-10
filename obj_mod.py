@@ -1,5 +1,4 @@
 object_file = r"C:\Users\Owner\Downloads\CERN obj files\track.obj"
-
 def obj_line_mod(path):
     with open(path,'r') as finp, open('modified_track.obj',"w") as fout:
         n = 0
@@ -11,6 +10,7 @@ def obj_line_mod(path):
                 #check to see if the line is a line declaration
                 new_contents.append(line)
             elif line[0:2] == 'o ':
+                #if it is the name of the object, we don't want to modify that so we just pass over it
                 pass
             else:
                 #in which case, replace it with the necessary normal vector
@@ -29,19 +29,11 @@ def obj_line_mod(path):
                 new_vertex = f"v {coordinates[1]} {new_y} {coordinates[3]}"
                 new_contents.append(new_vertex)
                 n += 1
-        #Hmmmmm.... How should I go about trying to declare the faces??? part of me is thinking
-        #that I should do something that uses an index to 
         i=1
         while i < n-2:
             new_face = f"f {i}//1 {i+1}//1 {i+2}//1\n"
             new_contents.append(new_face)
             i+=1
-        i=1
-        """while i < n-2:
-            face = f"f {i}//2 {i+1}//2 {i+2}//2\n"
-            new_contents.append(face)
-            i+=1"""
         print(new_contents)
         fout.writelines(new_contents)
-        
 obj_line_mod(object_file)
