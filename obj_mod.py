@@ -1,6 +1,6 @@
 #I don't know how to make a command line application in python so for right now we're just gonna have to define the file path by editing the code
 #Very important that you use an r-string for the path
-object_file = r"C:\Users\Owner\Downloads\CERN obj files\track.obj"
+object_file = r".\track__.obj"
 def obj_line_mod(path):
     path_list = path.split('\\')
     with open(path,'r') as finp, open(f'modified_{path_list[-1]}.obj',"w") as fout:
