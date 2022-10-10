@@ -10,7 +10,8 @@ def obj_line_mod(path):
         for index, line in enumerate(contents):
             #read through the file line by line
             if line[0:2] != 'l ':
-                #check to see if the line is a line declaration
+                #check to see if the line is a line declaration. 
+                #If the above is true, then it is either an object or vertex declaration, which we want to save
                 new_contents.append(line)
             elif line[0:2] == 'o ':
                 #if it is the name of the object, we don't want to modify that so we just pass over it
@@ -18,11 +19,11 @@ def obj_line_mod(path):
             else:
                 #in which case, replace it with the necessary normal vector
                 line = "vn 0.0 0.0 1.0\n"
-                #another_line = "vn 0.0 0.0 -1.0\n"
                 new_contents.append(line)
+                #another_line = "vn 0.0 0.0 -1.0\n"
                 #new_contents.append(another_line)
                 #Currently the "another_line" data just makes it flip upside down 
-                #but I feel like this is *probably* the right track to getting the triangles fixed
+                #but I feel like this is *probably* the right track to getting the triangles fixed. idk
                 continue
             if line[0:2] == 'v ':
                 #find all vertex values in the file and create a copy of the line
