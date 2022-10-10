@@ -1,6 +1,9 @@
+#I don't know how to make a command line application in python so for right now we're just gonna have to define the file path by editing the code
+#Very important that you use an r-string for the path
 object_file = r"C:\Users\Owner\Downloads\CERN obj files\track.obj"
 def obj_line_mod(path):
-    with open(path,'r') as finp, open('modified_track.obj',"w") as fout:
+    path_list = path.split('\\')
+    with open(path,'r') as finp, open(f'modified_{path_list[-1]}.obj',"w") as fout:
         n = 0
         contents = finp.readlines()
         new_contents = []
@@ -15,11 +18,12 @@ def obj_line_mod(path):
             else:
                 #in which case, replace it with the necessary normal vector
                 line = "vn 0.0 0.0 1.0\n"
-                another_line = "vn 0.0 0.0 -1.0\n"
+                #another_line = "vn 0.0 0.0 -1.0\n"
                 new_contents.append(line)
-                new_contents.append(another_line)
+                #new_contents.append(another_line)
+                #Currently the "another_line" data just makes it flip upside down 
+                #but I feel like this is *probably* the right track to getting the triangles fixed
                 continue
-            print(line)
             if line[0:2] == 'v ':
                 #find all vertex values in the file and create a copy of the line
                 #with y offset +0.1
@@ -31,9 +35,9 @@ def obj_line_mod(path):
                 n += 1
         i=1
         while i < n-2:
+            #define faces
             new_face = f"f {i}//1 {i+1}//1 {i+2}//1\n"
             new_contents.append(new_face)
             i+=1
-        print(new_contents)
         fout.writelines(new_contents)
 obj_line_mod(object_file)
