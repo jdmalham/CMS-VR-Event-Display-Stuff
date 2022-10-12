@@ -35,13 +35,11 @@ def obj_multi_line_mod(path):
         i=1
         while i < (2*n)-1:
             if i in exclusion_index_list:
-                print('yes')
                 i+=2
                 continue
             new_face = f'f {i}//1 {i+1}//1 {i+2}//1\n'
             new_contents.append(new_face)
             i+=1
-        #print(new_contents)
         fout.writelines(new_contents)
         
 obj_multi_line_mod(object_file)
