@@ -1,6 +1,6 @@
 object_file = r'.\Tracks_V3.obj'
 
-def obj_multi_line_mod(path):
+def obj_line_mod(path):
     path_list = path.split('\\')
     file_name = path_list[-1].split('.')[0]
     with open(path,'r') as finp, open(f'modified_{file_name}.obj','w') as fout:
@@ -42,4 +42,4 @@ def obj_multi_line_mod(path):
             i+=1
         fout.writelines(new_contents)
         
-obj_multi_line_mod(object_file)
+obj_line_mod(object_file)
