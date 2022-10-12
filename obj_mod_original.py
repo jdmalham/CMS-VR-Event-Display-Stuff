@@ -33,7 +33,6 @@ def obj_line_mod(path):
             new_face = f'f {i}//1 {i+1}//1 {i+2}//1\n'
             new_contents.append(new_face)
             i+=1
-        print(new_contents)
         fout.writelines(new_contents)
         
 obj_line_mod(object_file)
