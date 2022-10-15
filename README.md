@@ -3,5 +3,3 @@
     track__.obj and modified_track__.obj are examples of how the script works. Tracks_V3 is the publicly available track obj file from iSpy's "Hto4l_120-130GeV.ig:     Events/Run_201191/Event_1357605031" event dataset (multiple lines in one file), and you can probably guess what modified_Tracks_V3 is.
 
 2) obj_quad_mod.py does the same thing, but defines the surfaces as quadrilaterals. Benefits are that it renders better, and the resultant file is much smaller than the resultant file from obj_mod.py (transforming a 3955 sloc source obj file into a 11187 sloc file vs 14915 sloc file). modified_Tracks_V3_quad.obj is an example.
-
-3) obj_mod_original.py is the first version of the script which worked only for single line files.
