@@ -1,5 +1,7 @@
 import time
 
+start = time.time()
+
 def solid_dual_render(path):
     path_list = path.split('\\')
     file_name = path_list[-1].split('.')[0]
@@ -17,3 +19,6 @@ def solid_dual_render(path):
         fout.writelines(new_contents)
 
 solid_dual_render(r"C:\Users\Owner\Downloads\MuonChambers_V1 (2).obj")
+
+end = time.time()
+print(end-start)
