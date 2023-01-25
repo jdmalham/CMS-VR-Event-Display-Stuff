@@ -2,12 +2,12 @@ import time
 
 start = time.time()
 
-object_file = r'.\Tracks_V3.obj'
+object_file = r'C:\Users\Owner\Desktop\Functional Scripts\OBJ Files\Tracks_V3.obj'
 
 def obj_multi_line_mod(path):
     path_list = path.split('\\')
     file_name = path_list[-1].split('.')[0]
-    with open(path,'r') as finp, open(f'modified_{file_name}.obj','w') as fout:
+    with open(path,'r') as finp, open(f'mod_{file_name}.obj','w') as fout:
         n = 0
         #the exclusion list allows us to disconnect the faces from one another
         exclusion_index_list = []
@@ -37,7 +37,7 @@ def obj_multi_line_mod(path):
             if i in exclusion_index_list:
                 i+=2
                 continue
-            new_face = f'f {i} {i+1} {i+3} {i+2}\n'
+            new_face = f'f {i} {i+1} {i+3} {i+2}\nf {i+2} {i+3} {i+1} {i}\n'
             new_contents.append(new_face)
             i+=2
         #print(new_contents)
